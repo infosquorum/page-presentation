@@ -64,14 +64,14 @@ const eventTypes = [
 ];
 
 // Hook personnalisé pour le throttling du scroll
-function useThrottledScroll(callback, delay = 16) {
-  const throttleRef = useRef();
+function useThrottledScroll(callback: () => void, delay: number = 16) {
+  const throttleRef = useRef<number | null>(null);
   
   useEffect(() => {
     const handleScroll = () => {
-      if (throttleRef.current) return;
+      if (throttleRef.current !== null) return;
       
-      throttleRef.current = setTimeout(() => {
+      throttleRef.current = window.setTimeout(() => {
         callback();
         throttleRef.current = null;
       }, delay);
@@ -80,8 +80,8 @@ function useThrottledScroll(callback, delay = 16) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (throttleRef.current) {
-        clearTimeout(throttleRef.current);
+      if (throttleRef.current !== null) {
+        window.clearTimeout(throttleRef.current);
       }
     };
   }, [callback, delay]);
@@ -95,10 +95,10 @@ export default function Navbar() {
   const [isMobilePrestationsOpen, setIsMobilePrestationsOpen] = useState(false);
 
   // Refs pour les animations
-  const titleRef = useRef(null);
-  const logoRef = useRef(null);
-  const ctaButtonRef = useRef(null);
-  const timeoutRef = useRef(null);
+  const titleRef = useRef<HTMLElement | null>(null);
+  const logoRef = useRef<HTMLDivElement | null>(null);
+  const ctaButtonRef = useRef<HTMLAnchorElement | null>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   // Gestion du scroll avec throttling
   const handleScroll = useCallback(() => {
@@ -128,14 +128,14 @@ export default function Navbar() {
   // Gestion du menu déroulant desktop
   const handleDesktopMouseEnter = useCallback(() => {
     if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+      window.clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
     setIsDesktopPrestationsOpen(true);
   }, []);
 
   const handleDesktopMouseLeave = useCallback(() => {
-    timeoutRef.current = setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       setIsDesktopPrestationsOpen(false);
     }, NAVBAR_CONFIG.menuCloseDelay);
   }, []);
@@ -148,13 +148,13 @@ export default function Navbar() {
     
     // Nettoie le timeout si il existe
     if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+      window.clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
   }, []);
 
   // Gestion des touches clavier pour l'accessibilité
-  const handleKeyDown = useCallback((event, action) => {
+  const handleKeyDown = useCallback((event: React.KeyboardEvent, action: () => void) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       action();
@@ -170,7 +170,7 @@ export default function Navbar() {
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+        window.clearTimeout(timeoutRef.current);
       }
     };
   }, []);
