@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import HeroSection from './Component/HeroSection';
 import UpcomingEvents from './Component/UpcomingEvents';

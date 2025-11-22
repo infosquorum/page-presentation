@@ -34,7 +34,7 @@ export default function CallToAction() {
 
             <div className="text-center md:text-left">
               <h2 className="text-lg sm:text-xl md:text-3xl font-bold text-gray-900 dark:text-white">
-                N'attendez pas le prochain événement pour nous contacter !
+                N&apos;attendez pas le prochain événement pour nous contacter !
               </h2>
               <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-300">
                 Discutons dès maintenant de vos besoins et de comment nous pouvons vous aider

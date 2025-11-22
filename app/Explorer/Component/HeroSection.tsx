@@ -63,7 +63,7 @@ export default function HeroSection() {
                             <span className="font-bold">
                                 Chez EventQuorum, les événements nous font vibrer peu importe leurs formats.
                             </span>{" "}
-                            Rencontrons-nous et faisons connaissance sur des événements auxquels nous participons à travers la Côte d'Ivoire.
+                            Rencontrons-nous et faisons connaissance sur des événements auxquels nous participons à travers la Côte d&apos;Ivoire.
                         </p>
                     </div>
                 </div>

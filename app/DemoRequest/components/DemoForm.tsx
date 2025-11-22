@@ -127,7 +127,7 @@ export default function DemoForm() {
         {/** TYPE D’ÉVÉNEMENT */}
         <div>
           <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">
-            Type d'événement
+            Type d&apos;événement
           </label>
           <select
             name="eventType"
