@@ -193,7 +193,7 @@ export default function Navbar() {
     fixed w-full z-50 transition-all duration-300
     ${isScrolled 
       ? `dark:bg-${COLORS.background.dark} bg-${COLORS.background.light} shadow-md py-2` 
-      : 'bg-transparent py-3'
+      : 'bg-white py-3'
     }
   `.trim();
 

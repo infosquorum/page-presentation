@@ -116,19 +116,10 @@ const InvitationSection = () => {
               onMouseEnter={(e) => handleButtonHover(e, true)}
               onMouseLeave={(e) => handleButtonHover(e, false)}
             >
-              Créer un événement
-            </button>
-          </a>
-          
-          <a href="#Footer" className="inline-block transition-all">
-            <button
-              className="bg-transparent border-2 cursor-pointer border-white py-4 px-8 rounded-lg font-bold text-lg shadow-lg transition-all transform hover:translate-y-1"
-              onMouseEnter={(e) => handleButtonHover(e, true)}
-              onMouseLeave={(e) => handleButtonHover(e, false)}
-            >
               Nous contacter
             </button>
           </a>
+        
         </div>
       </div>
     </section>

@@ -172,7 +172,7 @@ const Footer = () => {
           © {new Date().getFullYear()} {logo.name}. Tous droits réservés.
         </div>
         <div className="flex space-x-6">
-          {useful_links
+          {/* {useful_links
             .filter((link) =>
               ['confidentialite', 'conditions-utilisation', 'mentions-legales'].some((slug) =>
                 link.url.includes(slug)
@@ -182,7 +182,7 @@ const Footer = () => {
               <a key={idx} href={link.url} className="hover:text-blue-400 transition-all">
                 {link.label}
               </a>
-            ))}
+            ))} */}
         </div>
       </div>
 
