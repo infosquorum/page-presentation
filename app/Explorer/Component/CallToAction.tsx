@@ -44,7 +44,7 @@ export default function CallToAction() {
 
           {/* Button */}
           <div className="w-full md:w-auto flex justify-center md:justify-end">
-            <Link href="/DemoRequest">
+            <Link href="#Footer">
               <span className="group relative inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-purple-600 to-amber-500 hover:from-purple-700 hover:to-amber-600 dark:from-purple-700 dark:to-amber-600 dark:hover:from-purple-800 dark:hover:to-amber-700 text-white text-sm sm:text-base font-medium rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 <span className="mr-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

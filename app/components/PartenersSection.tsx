@@ -18,9 +18,9 @@ export default function PartnersSection() {
     { id: 6, name: "NSIA Bank", logo: "/Logo-NSIA-BANK.png" },
     { id: 7, name: "Unilever", logo: "/logoUnilever2.png" },
     { id: 8, name: "PALMCI", logo: "/logopalmci.png" },
-    { id: 9, name: "LNB", logo: "/logo_lnb.jpg" },
+    { id: 9, name: "LNB", logo: "/logo_lnb.png" },
     { id: 10, name: "SMB", logo: "/logo_smb.png" },
-    { id: 11, name: "BIIC", logo: "/logo_biic1.png" },
+    { id: 11, name: "BIIC", logo: "/biic.png" },
   ];
 
   // Logos fictifs pour la démo (remplace par tes vraies images)
@@ -33,9 +33,9 @@ export default function PartnersSection() {
     "/Logo-NSIA-BANK.png",
     "/logoUnilever2.png",
     "/logopalmci.png",
-    "/logo_lnb.jpg",
+    "/logo_lnb.png",
     "/logo_smb.png",
-    "/logo_biic1.png",
+    "/biic.png",
   ];
 
   // Détection de la taille d'écran

@@ -132,7 +132,7 @@ export default function FunctionalitiesSection({ title, items }: Functionalities
         <div className="flex flex-wrap justify-center gap-10 mb-12">
           {items.map((item, index) => (
             <a 
-              href={item.link}
+              href="#"
               key={index}
               ref={el => { itemsRef.current[index] = el; }}
               className="flex flex-col items-center hover:bg-gray-200 dark:hover:bg-gray-800 p-5 transition"

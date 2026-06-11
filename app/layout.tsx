@@ -32,7 +32,10 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
-        <Flooter />
+        <div className="foot">
+          <Flooter />
+        </div>
+        {/* <Flooter /> */}
         <ScrollToTop />
       </body>
     </html>

@@ -135,7 +135,7 @@ export default function EventsSection() {
                   onMouseEnter={() => setActiveEvent(event.id)}
                   onMouseLeave={() => setActiveEvent(null)}
                 >
-                  <a  href={`/evenements/${event.id}`} className="block p-6">
+                  <a  href={`#${event.id}`} className="block p-6">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                       <div className="flex items-center">
                         <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mr-3 ${

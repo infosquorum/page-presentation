@@ -110,7 +110,7 @@ const InvitationSection = () => {
           ref={buttonsRef}
           className="flex flex-col md:flex-row justify-center gap-6"
         >
-          <a href="/DemoRequest" className="inline-block">
+          <a href="/#Footer" className="inline-block">
             <button
               className="bg-white text-blue-600 py-4 px-8 rounded-lg font-bold text-lg shadow-lg transition-all transform hover:translate-y-1 cursor-pointer"
               onMouseEnter={(e) => handleButtonHover(e, true)}

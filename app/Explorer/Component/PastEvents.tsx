@@ -9,7 +9,7 @@ export default function PastEvents() {
       date: "27-28 novembre 2024",
       location: "Abidjan, Côte d'Ivoire",
       imageSrc: "/events/ag_sgci_2024.jpeg",
-      link: "/events/heavent-paris-2024"
+      link: "#event"
     },
     {
       id: 2,
@@ -17,7 +17,7 @@ export default function PastEvents() {
       date: "10 Avril 2025",
       location: "Abidjan, Côte d'Ivoire",
       imageSrc: "/events/ag_orange.jpg",
-      link: "/events/heavent-paris-2023"
+      link: "#event"
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ export default function PastEvents() {
       date: "5-6 juin 2024",
       location: "Abidjan, Côte d'Ivoire",
       imageSrc: "/events/ag_nesle.jpg",
-      link: "/events/conference-europeenne-ux-ui"
+      link: "#event"
     },
     {
       id: 4,
@@ -33,7 +33,7 @@ export default function PastEvents() {
       date: "15-17 mai 2023",
       location: "Abidjan, Côte d'Ivoire",
       imageSrc: "/events/imex-frankfurt.jpg",
-      link: "/events/imex-frankfurt"
+      link: "#event"
     },
     {
       id: 5,
@@ -41,7 +41,7 @@ export default function PastEvents() {
       date: "8 avril 2025",
       location: "Abidjan, Côte d'Ivoire",
       imageSrc: "/events/ag_SAPH.jpg",
-      link: "/events/see-you-there"
+      link: "#event"
     },
     {
       id: 6,
@@ -49,7 +49,7 @@ export default function PastEvents() {
       date: "26 Août 2024",
       location: "Abidjan, Côte d'Ivoire",
       imageSrc: "/events/2024-sucrivoire-ag.jpg",
-      link: "https://groupesifca.com/sucrivoire-tenue-de-lassemblee-generale-mixte-2023/"
+      link: "#event"
     }
   ];
 

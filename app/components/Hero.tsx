@@ -35,12 +35,12 @@ export default function Hero() {
       coverUrl: "/event8.jpg",
       description: "Créez des moments de networking"
     },
-    {
-      id: "5",
-      title: "Lancement de produit",
-      coverUrl: "/produit1.png",
-      description: "Organisez vos lancements de produits"
-    }
+    // {
+    //   id: "5",
+    //   title: "Lancement de produit",
+    //   coverUrl: "/produit1.png",
+    //   description: "Organisez vos lancements de produits"
+    // }
   ];
 
   useEffect(() => {
@@ -89,7 +89,8 @@ export default function Hero() {
             {/* Boutons */}
             <div className="flex flex-wrap gap-4 mb-8">
               <Link
-                href="/DemoRequest"
+                // href="/DemoRequest"
+                href="/#Footer"
                 className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white no-underline rounded-lg font-medium transition-colors shadow-lg hover:shadow-xl"
               >
                 Créer un événement
