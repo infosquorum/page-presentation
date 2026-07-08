@@ -104,84 +104,96 @@ async function getAccessToken() {
 }
 
 module.exports = async function (context, req) {
-  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || 'unknown'
+  const ip = req.headers["x-forwarded-for"]?.split(",")[0]?.trim() || "unknown";
 
-  // 1. Rate limiting
   if (isRateLimited(ip)) {
-    context.res = { status: 429, body: { error: 'Trop de tentatives, réessayez plus tard.' } }
-    return
+    context.res = {
+      status: 429,
+      body: { error: "Trop de tentatives, réessayez plus tard." },
+    };
+    return;
   }
 
-  const body = req.body || {}
+  const body = req.body || {};
 
-  // 2. Honeypot — champ invisible, doit rester vide. Si rempli = bot.
   if (body.website) {
-    // On répond succès pour ne pas indiquer au bot qu'il a été détecté
-    context.res = { status: 200, body: { success: true } }
-    return
+    context.res = { status: 200, body: { success: true } };
+    return;
   }
 
-  // 3. Validation des champs
-  const validationErrors = validate(body)
+  const validationErrors = validate(body);
   if (validationErrors.length > 0) {
-    context.res = { status: 400, body: { error: 'Champs invalides', fields: validationErrors } }
-    return
+    context.res = {
+      status: 400,
+      body: { error: "Champs invalides", fields: validationErrors },
+    };
+    return;
   }
 
-  // 4. Vérification anti-bot Turnstile
-  const turnstileValid = await verifyTurnstile(body.turnstileToken, ip)
-  if (!turnstileValid) {
-    context.res = { status: 400, body: { error: 'Vérification anti-robot échouée' } }
-    return
-  }
-
-  const { name, email, company, eventType, message } = body
-
+  // Turnstile déplacé DANS le try/catch pour éviter un crash non maîtrisé
   try {
-    const token = await getAccessToken()
-    const senderMail = 'support@quorumenvent.com'
+    const turnstileValid = await verifyTurnstile(body.turnstileToken, ip);
+    if (!turnstileValid) {
+      context.res = {
+        status: 400,
+        body: { error: "Vérification anti-robot échouée" },
+      };
+      return;
+    }
+
+    const { name, email, company, eventType, message } = body;
+    const token = await getAccessToken();
+    const senderMail = "support@quorumenvent.com";
 
     const emailPayload = {
       message: {
         subject: `Nouvelle demande de démo - ${escapeHtml(company)}`,
         body: {
-          contentType: 'HTML',
+          contentType: "HTML",
           content: `
-            <h2>Nouvelle demande de démo</h2>
-            <p><strong>Nom :</strong> ${escapeHtml(name)}</p>
-            <p><strong>Email :</strong> ${escapeHtml(email)}</p>
-            <p><strong>Entreprise :</strong> ${escapeHtml(company)}</p>
-            <p><strong>Type d'événement :</strong> ${escapeHtml(eventType)}</p>
-            <p><strong>Message :</strong> ${escapeHtml(message || '-')}</p>
-          `
+              <h2>Nouvelle demande de démo</h2>
+              <p><strong>Nom :</strong> ${escapeHtml(name)}</p>
+              <p><strong>Email :</strong> ${escapeHtml(email)}</p>
+              <p><strong>Entreprise :</strong> ${escapeHtml(company)}</p>
+              <p><strong>Type d'événement :</strong> ${escapeHtml(
+                eventType
+              )}</p>
+              <p><strong>Message :</strong> ${escapeHtml(message || "-")}</p>
+            `,
         },
         toRecipients: [
-          { emailAddress: { address: 'support@quorumenvent.com' } },
-          { emailAddress: { address: 'infos@quorumenligne.com' } }
+          { emailAddress: { address: "support@quorumenvent.com" } },
+          { emailAddress: { address: "infos@quorumenligne.com" } },
         ],
-        replyTo: [{ emailAddress: { address: email } }]
+        replyTo: [{ emailAddress: { address: email } }],
       },
-      saveToSentItems: true
-    }
+      saveToSentItems: true,
+    };
 
-    const sendRes = await fetch(`https://graph.microsoft.com/v1.0/users/${senderMail}/sendMail`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(emailPayload)
-    })
+    const sendRes = await fetch(
+      `https://graph.microsoft.com/v1.0/users/${senderMail}/sendMail`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(emailPayload),
+      }
+    );
 
     if (!sendRes.ok) {
-      const errText = await sendRes.text()
-      context.log.error('Graph sendMail failed:', errText)
-      throw new Error('Échec envoi Graph')
+      const errText = await sendRes.text();
+      context.log.error("Graph sendMail failed:", errText);
+      throw new Error("Échec envoi Graph");
     }
 
-    context.res = { status: 200, body: { success: true } }
+    context.res = { status: 200, body: { success: true } };
   } catch (err) {
-    context.log.error('send-email error:', err.message)
-    context.res = { status: 500, body: { error: "Échec de l'envoi, réessayez plus tard." } }
+    context.log.error("send-email error:", err.message);
+    context.res = {
+      status: 500,
+      body: { error: "Échec de l'envoi, réessayez plus tard." },
+    };
   }
-}
+};

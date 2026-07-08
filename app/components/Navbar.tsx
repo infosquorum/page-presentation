@@ -309,7 +309,7 @@ export default function Navbar() {
           </div>
 
           {/* Bouton CTA */}
-          {/* <div className="hidden md:flex">
+          <div className="hidden md:flex">
             <Link 
               ref={ctaButtonRef} 
               href="/DemoRequest" 
@@ -317,7 +317,7 @@ export default function Navbar() {
             >
               Demander une démo
             </Link>
-          </div> */}
+          </div>
 
           {/* Bouton menu mobile */}
           <div className="md:hidden flex items-center">
@@ -422,13 +422,13 @@ export default function Navbar() {
           >
             Qui sommes-nous ?
           </Link>
-          {/* <Link 
+          <Link 
             href="/DemoRequest" 
             className={`block bg-${COLORS.primary} text-white hover:bg-${COLORS.primaryHover} px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
             role="menuitem"
           >
             Demander une démo
-          </Link> */}
+          </Link>
         </div>
       </div>
     </nav>
