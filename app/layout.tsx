@@ -1,3 +1,4 @@
+//app/layout.tsx
 import type { Metadata } from "next";
 import Navbar from './components/Navbar';
 import ScrollToTop from "./components/ScrollToTop";

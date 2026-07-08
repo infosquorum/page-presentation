@@ -7,6 +7,7 @@ import Equipe from './component/equipe';
 import Valeurs from './component/valeur';
 import Histoire from './component/histoire';
 import Head from 'next/head';
+import QuiSommesNousSection from './component/qui-sommes-nous';
 
 export default function QuiNousSommes() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,6 +26,7 @@ export default function QuiNousSommes() {
       <Header isLoaded={isLoaded} />
 
       <main className="max-w-6xl mx-auto px-4 py-16">
+        <QuiSommesNousSection isLoaded={isLoaded} />
         <Mission isLoaded={isLoaded} />
         <Equipe isLoaded={isLoaded} />
         <Valeurs isLoaded={isLoaded} />

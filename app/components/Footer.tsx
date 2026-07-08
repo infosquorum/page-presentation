@@ -169,10 +169,10 @@ const Footer = () => {
       {/* Copyright */}
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm text-gray-400 gap-4">
         <div ref={copyrightRef}>
-          © {new Date().getFullYear()} {logo.name}. Tous droits réservés.
+          © 2025 {logo.name} | Powered by FX_LABS SARL
         </div>
-        <div className="flex space-x-6">
-          {/* {useful_links
+        {/* <div className="flex space-x-6">
+          {useful_links
             .filter((link) =>
               ['confidentialite', 'conditions-utilisation', 'mentions-legales'].some((slug) =>
                 link.url.includes(slug)
@@ -182,8 +182,8 @@ const Footer = () => {
               <a key={idx} href={link.url} className="hover:text-blue-400 transition-all">
                 {link.label}
               </a>
-            ))} */}
-        </div>
+            ))}
+        </div> */}
       </div>
 
       {/* Ligne lumineuse décorative */}
