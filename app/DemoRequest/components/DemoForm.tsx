@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import Script from 'next/script'
 import options from '../../data/options.json'
+import Toast from './Toast'
 
 declare global {
   interface Window {
@@ -26,6 +27,7 @@ export default function DemoForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [turnstileToken, setTurnstileToken] = useState('')
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
 
   const [form, setForm] = useState({
     name: '',
@@ -97,12 +99,11 @@ export default function DemoForm() {
     }
 
     if (!turnstileToken) {
-      setSubmitError('Veuillez valider la vérification anti-robot.')
+      setToast({ message: 'Veuillez valider la vérification anti-robot.', type: 'error' })
       return
     }
 
     setErrors({})
-    setSubmitError('')
     setIsSubmitting(true)
 
     try {
@@ -117,14 +118,14 @@ export default function DemoForm() {
         throw new Error(data.error || 'Erreur serveur')
       }
 
-      alert('Votre demande a été envoyée avec succès.')
+      setToast({ message: 'Votre demande a été envoyée avec succès. Nous vous répondrons rapidement.', type: 'success' })
       setForm({ name: '', email: '', company: '', eventType: '', message: '', website: '' })
       setTurnstileToken('')
       if (window.turnstile && widgetIdRef.current) {
         window.turnstile.reset(widgetIdRef.current)
       }
     } catch {
-      setSubmitError('Une erreur est survenue, réessayez plus tard.')
+      setToast({ message: 'Une erreur est survenue, réessayez plus tard.', type: 'error' })
     } finally {
       setIsSubmitting(false)
     }
@@ -244,11 +245,11 @@ export default function DemoForm() {
         {/* Widget Turnstile */}
         <div ref={turnstileRef} />
 
-        {submitError && (
+        {/* {submitError && (
           <p role="alert" aria-live="polite" className="text-red-500 text-sm text-center">
             {submitError}
           </p>
-        )}
+        )} */}
 
         <button
           type="submit"
