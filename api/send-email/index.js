@@ -143,7 +143,7 @@ module.exports = async function (context, req) {
 
     const { name, email, company, eventType, message } = body;
     const token = await getAccessToken();
-    const senderMail = "support@quorumenvent.com";
+    const senderMail = "support@quorumevent.com";
 
     const emailPayload = {
       message: {
@@ -162,7 +162,7 @@ module.exports = async function (context, req) {
             `,
         },
         toRecipients: [
-          { emailAddress: { address: "support@quorumenvent.com" } },
+          { emailAddress: { address: "support@quorumevent.com" } },
           { emailAddress: { address: "infos@quorumenligne.com" } },
         ],
         replyTo: [{ emailAddress: { address: email } }],
