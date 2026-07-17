@@ -35,7 +35,7 @@ const Carriere = () => {
       type: "CDI",
       experience: "3+ ans",
       icon: <FiBarChart2 className="w-8 h-8" />,
-      description: "Pilotez la stratégie produit et travaillez avec nos équipes pour définir la roadmap d'EventQuorum.",
+      description: "Pilotez la stratégie produit et travaillez avec nos équipes pour définir la roadmap de Quorum Event.",
       skills: ["Product Strategy", "Agile", "Analytics", "UX/UI"],
       posted: "Il y a 5 jours"
     },
@@ -161,7 +161,7 @@ const Carriere = () => {
               <FiBriefcase className="w-10 h-10" />
             </div> */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
-              Rejoignez l'Aventure EventQuorum
+              Rejoignez l'Aventure Quorum Event
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
               Construisez votre carrière dans une entreprise innovante qui révolutionne l'industrie des événements
@@ -271,7 +271,7 @@ const Carriere = () => {
               Nos Départements
             </h2>
             <p className="text-lg text-gray-600">
-              Découvrez les différentes équipes qui composent EventQuorum
+              Découvrez les différentes équipes qui composent Quorum Event
             </p>
           </div>
 
@@ -447,7 +447,7 @@ const Carriere = () => {
             Prêt à Faire la Différence ?
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Rejoignez EventQuorum et contribuez à révolutionner l'industrie des événements
+            Rejoignez Quorum Event et contribuez à révolutionner l'industrie des événements
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="DemoRequest">

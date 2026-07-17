@@ -21,7 +21,7 @@ const TemoignagesClients = () => {
       image: "👩🏾‍💼",
       rating: 5,
       date: "Novembre 2024",
-      text: "EventQuorum a transformé notre façon d'organiser nos événements corporate. La plateforme est intuitive et le support client est exceptionnel. Nous avons réussi à organiser 5 conférences majeures cette année avec plus de 2000 participants au total.",
+      text: "Quorum Event a transformé notre façon d'organiser nos événements corporate. La plateforme est intuitive et le support client est exceptionnel. Nous avons réussi à organiser 5 conférences majeures cette année avec plus de 2000 participants au total.",
       eventType: "Conférences B2B"
     },
     {
@@ -76,7 +76,7 @@ const TemoignagesClients = () => {
       image: "👨🏿‍💼",
       rating: 5,
       date: "Juin 2024",
-      text: "ROI exceptionnel ! EventQuorum nous a permis d'augmenter nos ventes de billets de 60% grâce aux fonctionnalités de marketing intégrées. Les rapports détaillés nous aident à optimiser chaque événement.",
+      text: "ROI exceptionnel ! Quorum Event nous a permis d'augmenter nos ventes de billets de 60% grâce aux fonctionnalités de marketing intégrées. Les rapports détaillés nous aident à optimiser chaque événement.",
       eventType: "Salons Professionnels"
     }
   ];
@@ -127,7 +127,7 @@ const TemoignagesClients = () => {
               Témoignages Clients
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              Découvrez ce que nos clients disent de leur expérience avec EventQuorum
+              Découvrez ce que nos clients disent de leur expérience avec Quorum Event
             </p>
           </div>
         </div>
@@ -169,7 +169,7 @@ const TemoignagesClients = () => {
               Ce Que Disent Nos Clients
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Des retours authentiques de professionnels qui utilisent EventQuorum au quotidien
+              Des retours authentiques de professionnels qui utilisent Quorum Event au quotidien
             </p>
           </div>
 
@@ -240,7 +240,7 @@ const TemoignagesClients = () => {
               Ils Nous Font Confiance
             </h2>
             <p className="text-lg text-gray-600">
-              Rejoignez des centaines d'organisations qui utilisent EventQuorum
+              Rejoignez des centaines d'organisations qui utilisent Quorum Event
             </p>
           </div>
 
@@ -275,7 +275,7 @@ const TemoignagesClients = () => {
               <div className="text-6xl mb-4">📈</div>
               <h3 className="text-2xl font-bold mb-3">TechCorp Afrique</h3>
               <p className="text-blue-100 mb-4">
-                +150% d'augmentation de la participation aux événements après l'adoption d'EventQuorum
+                +150% d'augmentation de la participation aux événements après l'adoption d'Quorum Event
               </p>
               <div className="text-sm text-blue-200">
                 Conférences B2B • 2000+ participants
@@ -325,7 +325,7 @@ const TemoignagesClients = () => {
                 <div className="text-6xl">▶️</div>
               </div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">Sophie Kouassi</h3>
-              <p className="text-sm text-gray-600">Comment EventQuorum a transformé nos conférences</p>
+              <p className="text-sm text-gray-600">Comment Quorum Event a transformé nos conférences</p>
               <p className="text-xs text-blue-600 mt-2">3:45 min</p>
             </div>
 
@@ -357,7 +357,7 @@ const TemoignagesClients = () => {
             Rejoignez Nos Clients Satisfaits
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Créez des événements mémorables avec EventQuorum
+            Créez des événements mémorables avec Quorum Event
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">

@@ -92,7 +92,7 @@ export default function QuiSommesNous({
 
                     <p className="text-lg text-gray-700 leading-relaxed text-justify">
                         Parmi nos réalisations figure
-                        <strong> QUORUMEVENT</strong>, une plateforme conçue pour simplifier
+                        <strong> QUORUM EVENT</strong>, une plateforme conçue pour simplifier
                         l'organisation d'événements professionnels et grand public, en
                         offrant aux organisateurs des outils modernes pour gérer leurs
                         participants, inscriptions, paiements, votes et interactions.

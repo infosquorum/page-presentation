@@ -61,7 +61,7 @@ export default function HeroSection() {
                     >
                         <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
                             <span className="font-bold">
-                                Chez EventQuorum, les événements nous font vibrer peu importe leurs formats.
+                                Chez Quorum Event, les événements nous font vibrer peu importe leurs formats.
                             </span>{" "}
                             Rencontrons-nous et faisons connaissance sur des événements auxquels nous participons à travers la Côte d&apos;Ivoire.
                         </p>

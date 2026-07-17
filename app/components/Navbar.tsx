@@ -215,7 +215,7 @@ export default function Navbar() {
                 ref={titleRef} 
                 className="text-xl font-bold text-gray-900 dark:text-white"
               >
-                EventQuorum
+                Quorum Event
               </span>
             </Link>
           </div>
@@ -291,7 +291,7 @@ export default function Navbar() {
                   <div className="w-[60%] h-[200px] bg-gray-100 rounded-md overflow-hidden flex items-center justify-center">
                     <img
                       src="/presentation-menu1.avif"
-                      alt="Illustration des prestations EventQuorum"
+                      alt="Illustration des prestations Quorum Event"
                       className="object-cover w-full h-full"
                       loading="lazy"
                     />

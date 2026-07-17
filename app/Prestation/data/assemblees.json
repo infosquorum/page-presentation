@@ -22,11 +22,11 @@
     "bgColor": "bg-green-100"
   },
   "reasonsToChoose": {
-    "title": "Deux raisons de choisir EventQuorum",
+    "title": "Deux raisons de choisir Quorum Event",
     "blocks": [
       {
         "title": "Digitalisez et accélérez vos assemblées générales",
-        "content": "Supprimez les lenteurs liées aux votes manuels et à l’enregistrement papier. Avec EventQuorum, tous les processus sont fluides, rapides et traçables.",
+        "content": "Supprimez les lenteurs liées aux votes manuels et à l’enregistrement papier. Avec Quorum Event, tous les processus sont fluides, rapides et traçables.",
         "image": "/images/assemblees/voting-system.jpg",
         "bgColor": "bg-emerald-50"
       },

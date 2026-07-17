@@ -18,33 +18,33 @@ const [expandedItem, setExpandedItem] = useState<number | null>(null);
   const faqData = [
     {
       id: 1,
-      question: "Qu'est-ce qu'EventQuorum ?",
-      answer: "EventQuorum est une plateforme innovante de gestion d'événements qui permet aux organisateurs de créer, gérer et optimiser leurs événements de manière efficace. Notre solution offre des outils complets pour la planification, la promotion, la gestion des participants et l'analyse des résultats."
+      question: "Qu'est-ce qe Quorum Event ?",
+      answer: "Quorum Event est une plateforme innovante de gestion d'événements qui permet aux organisateurs de créer, gérer et optimiser leurs événements de manière efficace. Notre solution offre des outils complets pour la planification, la promotion, la gestion des participants et l'analyse des résultats."
     },
     {
       id: 2,
-      question: "Comment EventQuorum peut-il m'aider à organiser mes événements ?",
-      answer: "EventQuorum simplifie l'organisation d'événements grâce à ses fonctionnalités intégrées : création de pages d'événement personnalisées, gestion des inscriptions en temps réel, système de billetterie, outils de communication avec les participants, analytics détaillés, et bien plus encore. Tout est centralisé sur une seule plateforme."
+      question: "Comment Quorum Event peut-il m'aider à organiser mes événements ?",
+      answer: "Quorum Event simplifie l'organisation d'événements grâce à ses fonctionnalités intégrées : création de pages d'événement personnalisées, gestion des inscriptions en temps réel, système de billetterie, outils de communication avec les participants, analytics détaillés, et bien plus encore. Tout est centralisé sur une seule plateforme."
     },
     {
       id: 3,
-      question: "Quels types d'événements puis-je créer avec EventQuorum ?",
-      answer: "EventQuorum s'adapte à tous types d'événements : conférences professionnelles, séminaires, ateliers, formations, événements corporatifs, salons, concerts, festivals, événements sportifs, webinaires, et événements hybrides. La plateforme est flexible et personnalisable selon vos besoins spécifiques."
+      question: "Quels types d'événements puis-je créer avec Quorum Event ?",
+      answer: "Quorum Event s'adapte à tous types d'événements : conférences professionnelles, séminaires, ateliers, formations, événements corporatifs, salons, concerts, festivals, événements sportifs, webinaires, et événements hybrides. La plateforme est flexible et personnalisable selon vos besoins spécifiques."
     },
     {
       id: 4,
-      question: "EventQuorum propose-t-il des outils d'analyse ?",
-      answer: "Oui, EventQuorum inclut des tableaux de bord analytiques complets qui vous permettent de suivre les inscriptions, analyser la participation, mesurer l'engagement des participants, générer des rapports détaillés, et obtenir des insights précieux pour optimiser vos futurs événements."
+      question: "Quorum Event propose-t-il des outils d'analyse ?",
+      answer: "Oui, Quorum Event inclut des tableaux de bord analytiques complets qui vous permettent de suivre les inscriptions, analyser la participation, mesurer l'engagement des participants, générer des rapports détaillés, et obtenir des insights précieux pour optimiser vos futurs événements."
     },
     {
       id: 5,
       question: "La plateforme est-elle facile à utiliser ?",
-      answer: "Absolument ! EventQuorum a été conçu avec une interface intuitive et user-friendly. Aucune compétence technique particulière n'est requise. Notre équipe propose également un accompagnement personnalisé et des ressources de formation pour vous aider à maîtriser rapidement la plateforme."
+      answer: "Absolument ! Quorum Event a été conçu avec une interface intuitive et user-friendly. Aucune compétence technique particulière n'est requise. Notre équipe propose également un accompagnement personnalisé et des ressources de formation pour vous aider à maîtriser rapidement la plateforme."
     },
     {
       id: 6,
       question: "Puis-je personnaliser l'apparence de mes événements ?",
-      answer: "Oui, EventQuorum offre de nombreuses options de personnalisation : thèmes et couleurs personnalisables, ajout de votre logo et branding, création de pages d'événement sur mesure, emails de communication personnalisés, et possibilité d'intégrer votre charte graphique."
+      answer: "Oui, Quorum Event offre de nombreuses options de personnalisation : thèmes et couleurs personnalisables, ajout de votre logo et branding, création de pages d'événement sur mesure, emails de communication personnalisés, et possibilité d'intégrer votre charte graphique."
     },
     {
       id: 7,
@@ -53,7 +53,7 @@ const [expandedItem, setExpandedItem] = useState<number | null>(null);
     },
     {
       id: 8,
-      question: "EventQuorum propose-t-il un support client ?",
+      question: "Quorum Event propose-t-il un support client ?",
       answer: "Oui, nous proposons un support client dédié via plusieurs canaux : assistance par email, chat en ligne, documentation complète, tutoriels vidéo, et accompagnement personnalisé pour les clients premium. Notre équipe est là pour vous aider à réussir vos événements."
     }
   ];

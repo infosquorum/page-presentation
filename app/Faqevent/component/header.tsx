@@ -40,9 +40,9 @@ export default function Headerfaq({ isLoaded }: HeaderfaqProps) {
           />
         </div>
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl font-bold text-white mb-4">FAQ EventQuorum</h1>
+          <h1 className="text-5xl font-bold text-white mb-4">FAQ Quorum Event</h1>
           <p className="text-xl text-indigo-100 max-w-2xl mx-auto">
-            Découvrez tout ce que vous devez savoir sur EventQuorum, la plateforme qui révolutionne la gestion d'événements
+            Découvrez tout ce que vous devez savoir sur Quorum Event, la plateforme qui révolutionne la gestion d'événements
           </p>
         </div>
       </header>

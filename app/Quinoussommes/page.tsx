@@ -19,7 +19,7 @@ export default function QuiNousSommes() {
   return (
     <div className="bg-gradient-to-b min-h-screen from-white to-gray-50">
       <Head>
-        <title>Qui nous sommes | EventQuorum</title>
+        <title>Qui nous sommes | Quorum Event</title>
         <meta name="description" content="Découvrez notre histoire, notre équipe et nos valeurs" />
       </Head>
 

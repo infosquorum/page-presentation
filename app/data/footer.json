@@ -1,7 +1,7 @@
 {
     "logo": {
       "icon": "E",
-      "name": "EventQuorum",
+      "name": "Quorum Event",
       "description": "Transformez vos idées en événements inoubliables. Notre équipe expérimentée vous accompagne dans la création d'expériences sur mesure qui marqueront les esprits."
     },
     "services": [
@@ -24,10 +24,10 @@
       "email": "infos@quorumenligne.com"
     },
     "social_media": {
-      "facebook": "https://facebook.com/eventquorum",
-      "twitter": "https://twitter.com/eventquorum",
-      "instagram": "https://instagram.com/eventquorum",
-      "linkedin": "https://linkedin.com/company/eventquorum"
+      "facebook": "https://facebook.com/quorumevent",
+      "twitter": "https://twitter.com/quorumevent",
+      "instagram": "https://instagram.com/quorumevent",
+      "linkedin": "https://linkedin.com/company/quorumevent"
     }
   }
   

@@ -27,7 +27,7 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
                         <div ref={logoRef} className="h-8 w-8 bg-blue-600 rounded-full mr-2" />
-                        <span ref={titleRef} className="text-xl font-bold text-gray-900 dark:text-white">EventQuorum</span>
+                        <span ref={titleRef} className="text-xl font-bold text-gray-900 dark:text-white">Quorum Event</span>
                     </Link>
 
                     {/* Navigation */}

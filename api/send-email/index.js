@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 // Si besoin de plus robuste plus tard : Azure Table Storage ou Redis.
 const requestLog = new Map();
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 3;
+const RATE_LIMIT_MAX_REQUESTS = 2;
 
 function isRateLimited(ip) {
   const now = Date.now();

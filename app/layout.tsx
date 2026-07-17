@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EventQuorum",
+  title: "Quorum Event",
   description: "Une nouvelle façon de créer",
 };
 
