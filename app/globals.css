@@ -1,10 +1,9 @@
-/* globals.css*/
-
+/* globals.css */
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f7fb;
+  --foreground: #0e1024;
 }
 
 @theme inline {
@@ -12,26 +11,122 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+  --font-display: var(--font-unbounded);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Palette Quorum Event */
+  --color-ink: #0e1024;
+  --color-night: #07081a;
+  --color-night-2: #0d0f26;
+  --color-mist: #f6f7fb;
+  --color-cloud: #eef0f8;
+  --color-slate: #535978;
+  --color-haze: #9aa0c3;
+  --color-brand: #4155c9;
+  --color-brand-2: #6e7ff3;
+  --color-glow: #8f9cff;
+  --color-lavender: #b9a9ee;
+  --color-mint: #8fd3be;
+  --color-peach: #f2b48c;
+  --color-pink: #efa7b5;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-html {
-  scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
+[id] { scroll-margin-top: 132px; }
+:focus-visible { outline: 2px solid #6e7ff3; outline-offset: 3px; border-radius: 10px; }
+
+/* ---------- Animations ---------- */
+@keyframes qPulse { 0% { box-shadow: 0 0 0 0 rgba(63,174,140,.8) } 100% { box-shadow: 0 0 0 10px rgba(63,174,140,0) } }
+@keyframes qMarquee { to { transform: translateX(-50%) } }
+@keyframes qWord { from { opacity: 0; transform: translateY(.5em); filter: blur(10px) } to { opacity: 1; transform: none; filter: none } }
+@keyframes qIn { from { opacity: 0; transform: translateY(-8px) } to { opacity: 1; transform: none } }
+@keyframes qFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+@keyframes qScan { 0%,100% { top: 6% } 50% { top: 88% } }
+@keyframes qDraw { from { stroke-dashoffset: 700 } to { stroke-dashoffset: 0 } }
+@keyframes qConf { 0% { transform: translateY(-40px) rotate(0); opacity: 0 } 10% { opacity: 1 } 100% { transform: translateY(560px) rotate(620deg); opacity: 0 } }
+@keyframes qBounce { 0%,100% { transform: translateY(0) } 40% { transform: translateY(-.12em) } 60% { transform: translateY(.03em) } }
+@keyframes qBeam { 0% { transform: translateX(-120%) } 100% { transform: translateX(220%) } }
+@keyframes qGlow { 0%,100% { opacity: .55 } 50% { opacity: .9 } }
+@keyframes qGrid { to { background-position: 0 64px } }
+@keyframes qRec { 0%,100% { opacity: 1 } 50% { opacity: .3 } }
+
+.q-live { animation: qPulse 1.6s ease-out infinite; }
+.q-rec { animation: qRec 1.2s ease-in-out infinite; }
+.q-marquee { animation: qMarquee 42s linear infinite; }
+.q-marquee:hover { animation-play-state: paused; }
+.q-word { display: inline-block; animation: qWord .8s cubic-bezier(.2,.8,.2,1) both; }
+.q-in { animation: qIn .35s cubic-bezier(.2,.8,.2,1) both; }
+.q-float { animation: qFloat 6s ease-in-out infinite; }
+.q-float-2 { animation: qFloat 7s ease-in-out -3s infinite; }
+.q-scan { animation: qScan 2.4s ease-in-out infinite; }
+.q-draw { stroke-dasharray: 700; animation: qDraw 2.6s ease-out .3s both; }
+.q-conf { animation: qConf 5s linear infinite; }
+.q-letter { display: inline-block; animation: qBounce 3s ease-in-out infinite; }
+.q-beam { animation: qBeam 3.2s ease-in-out infinite; }
+.q-glow { animation: qGlow 5s ease-in-out infinite; }
+.q-grid { animation: qGrid 6s linear infinite; }
+
+/* Fond quadrillé du hero */
+.q-gridbg {
+  background-image: linear-gradient(rgba(14,16,36,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(14,16,36,.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 30%, transparent 75%);
 }
 
-html,
-body {
-  overflow-x: hidden;
+/* Texte qui se remplit au défilement */
+.q-fill-light { background-image: linear-gradient(180deg, #0e1024 50%, #b4b8d0 50%); }
+.q-fill-dark { background-image: linear-gradient(180deg, #eceefa 50%, #3c4170 50%); }
+.q-fill-light, .q-fill-dark { background-size: 100% 200%; background-position: 0 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Micro-interactions */
+.q-zoom img { transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+.q-zoom:hover img { transform: scale(1.06); }
+.q-btn { transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background-color .25s; }
+.q-btn:hover { box-shadow: 0 20px 50px -18px rgba(65,85,201,.9); }
+.q-link { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .35s; }
+.q-link:hover { background-size: 100% 1px; }
+
+/* Carte qui bascule (variables posées par <TiltCard>) */
+.q-tilt { transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .25s ease-out, box-shadow .4s; }
+.q-tilt .q-tilt-img { transform: scale(1.08) translate(var(--px, 0px), var(--py, 0px)); transition: transform .3s ease-out; }
+.q-tilt .q-tilt-light { background: radial-gradient(400px circle at var(--gx, 50%) var(--gy, -40%), rgba(255,255,255,.18), transparent 50%); }
+
+/* Tuile projecteur (variables posées par <Spotlight>) */
+.q-spot { background: rgba(255,255,255,.08); }
+.q-spot:hover { background: radial-gradient(320px circle at var(--x, 50%) var(--y, 0%), rgba(143,156,255,.9), rgba(255,255,255,.08) 60%); }
+.q-spot > .q-spot-in { background: #0d0f26; }
+.q-spot:hover > .q-spot-in { background: radial-gradient(500px circle at var(--x, 50%) var(--y, 0%), rgba(110,127,243,.14), #0d0f26 55%); }
+
+/* Logotype du pied de page : taille proportionnelle à la largeur disponible */
+.q-wordmark { container-type: inline-size; }
+.q-wordmark-in { font-size: 9.4cqi; }
+
+/* ---------- Animations liées au défilement (Chrome, Edge, Safari 26+) ---------- */
+@supports (animation-timeline: view()) {
+  @keyframes sdTilt { from { transform: perspective(1800px) rotateX(30deg) scale(.86) translateY(60px) } to { transform: perspective(1800px) rotateX(0) scale(1) translateY(0) } }
+  @keyframes sdReveal { from { clip-path: inset(10% 10% 10% 10% round 40px) } to { clip-path: inset(0 0 0 0 round 0) } }
+  @keyframes sdPar { from { transform: translateY(-10%) scale(1.15) } to { transform: translateY(10%) scale(1.15) } }
+  @keyframes sdFill { from { background-position: 0 100% } to { background-position: 0 0 } }
+  @keyframes sdUp { from { opacity: 0; transform: translateY(80px) } to { opacity: 1; transform: none } }
+  @keyframes sdScale { from { transform: scale(.8); opacity: .2 } to { transform: none; opacity: 1 } }
+  .sd-tilt { animation: sdTilt linear both; animation-timeline: view(); animation-range: entry 0% cover 42%; }
+  .sd-reveal { animation: sdReveal linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+  .sd-par { animation: sdPar linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+  .sd-fill { animation: sdFill linear both; animation-timeline: view(); animation-range: entry 30% cover 55%; }
+  .sd-up { animation: sdUp linear both; animation-timeline: view(); animation-range: entry 0% entry 90%; }
+  .sd-scale { animation: sdScale linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .q-live, .q-rec, .q-marquee, .q-word, .q-in, .q-float, .q-float-2, .q-scan, .q-draw, .q-conf, .q-letter, .q-beam, .q-glow, .q-grid,
+  .sd-tilt, .sd-reveal, .sd-par, .sd-fill, .sd-up, .sd-scale { animation: none !important; }
+  .q-tilt, .q-tilt .q-tilt-img, .q-btn { transform: none !important; }
 }

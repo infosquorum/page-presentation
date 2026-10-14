@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
 import Script from 'next/script'
 import options from '../../data/options.json'
 import Toast from './Toast'
@@ -23,9 +22,7 @@ export default function DemoForm() {
   const turnstileRef = useRef<HTMLDivElement | null>(null)
   const widgetIdRef = useRef<string | null>(null)
 
-  const [isLoaded, setIsLoaded] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitError, setSubmitError] = useState('')
   const [turnstileToken, setTurnstileToken] = useState('')
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
 
@@ -55,16 +52,6 @@ export default function DemoForm() {
     }
   }, [])
 
-  // Animation d'entrée du formulaire
-  useEffect(() => {
-    if (formRef.current) {
-      gsap.fromTo(
-        formRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: 'power3.out', onComplete: () => setIsLoaded(true) }
-      )
-    }
-  }, [])
 
   // Nettoyage du widget Turnstile au démontage du composant
   useEffect(() => {
@@ -131,134 +118,84 @@ export default function DemoForm() {
     }
   }
 
-  return (
-    <div
-      ref={formRef}
-      className={`max-w-3xl mx-auto p-8 mt-12 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'
-        } bg-white dark:bg-gray-900`}
-    >
-      <h2 className="text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-8">
-        Parlons de votre projet événementiel
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
+  const field = (name: 'name' | 'email' | 'company', label: string, type: string, placeholder: string, autoComplete: string) => (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={`demo-${name}`} className="text-sm font-medium">{label}</label>
+      <input
+        id={`demo-${name}`}
+        type={type}
+        name={name}
+        value={form[name]}
+        onChange={handleChange}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        aria-invalid={!!errors[name]}
+        aria-describedby={errors[name] ? `${name}-error` : undefined}
+        className="w-full min-h-[52px] rounded-[14px] border border-ink/[.14] bg-white px-4 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+      />
+      {errors[name] && <p id={`${name}-error`} role="alert" className="text-sm text-[#c2312f]">{errors[name]}</p>}
+    </div>
+  )
 
+  return (
+    <div ref={formRef} className="rounded-[32px] border border-ink/[.07] bg-white p-6 sm:p-12">
+      <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-[18px]">
         {/* Honeypot — invisible pour les humains, piège pour les bots */}
         <div className="sr-only" aria-hidden="true">
           <label htmlFor="website">Ne pas remplir ce champ</label>
-          <input
-            type="text"
-            id="website"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            value={form.website}
-            onChange={handleChange}
-          />
+          <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={handleChange} />
         </div>
 
-        <div>
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">Nom complet</label>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            aria-invalid={!!errors.name}
-            aria-describedby={errors.name ? 'name-error' : undefined}
-            className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          {errors.name && (
-            <p id="name-error" role="alert" className="text-red-500 text-sm mt-1">
-              {errors.name}
-            </p>
-          )}
+        <div className="grid gap-[18px] sm:grid-cols-2">
+          {field('name', 'Nom complet', 'text', 'Awa Koné', 'name')}
+          {field('email', 'E-mail professionnel', 'email', 'awa@entreprise.ci', 'email')}
         </div>
-
-        <div>
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">Adresse email</label>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? 'email-error' : undefined}
-            className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          {errors.email && (
-            <p id="email-error" role="alert" className="text-red-500 text-sm mt-1">
-              {errors.email}
-            </p>
-          )}
+        <div className="grid gap-[18px] sm:grid-cols-2">
+          {field('company', 'Entreprise ou organisation', 'text', 'Nom de votre entreprise', 'organization')}
+          <div className="flex flex-col gap-2">
+            <label htmlFor="demo-eventType" className="text-sm font-medium">Type d&apos;événement</label>
+            <select
+              id="demo-eventType"
+              name="eventType"
+              value={form.eventType}
+              onChange={handleChange}
+              aria-invalid={!!errors.eventType}
+              aria-describedby={errors.eventType ? 'eventType-error' : undefined}
+              className="w-full min-h-[52px] rounded-[14px] border border-ink/[.14] bg-white px-4 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+            >
+              <option value="">Choisir un format</option>
+              {options.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+            </select>
+            {errors.eventType && <p id="eventType-error" role="alert" className="text-sm text-[#c2312f]">{errors.eventType}</p>}
+          </div>
         </div>
-
-        <div>
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">Entreprise / Organisation</label>
-          <input
-            type="text"
-            name="company"
-            value={form.company}
-            onChange={handleChange}
-            aria-invalid={!!errors.company}
-            aria-describedby={errors.company ? 'company-error' : undefined}
-            className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          {errors.company && (
-            <p id="company-error" role="alert" className="text-red-500 text-sm mt-1">
-              {errors.company}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">Type d&apos;événement</label>
-          <select
-            name="eventType"
-            value={form.eventType}
-            onChange={handleChange}
-            aria-invalid={!!errors.eventType}
-            aria-describedby={errors.eventType ? 'eventType-error' : undefined}
-            className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            <option value="">-- Choisir un type --</option>
-            {options.map((opt, idx) => (
-              <option key={idx} value={opt}>{opt}</option>
-            ))}
-          </select>
-          {errors.eventType && (
-            <p id="eventType-error" role="alert" className="text-red-500 text-sm mt-1">
-              {errors.eventType}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-gray-700 dark:text-gray-300 font-medium mb-1">Message (optionnel)</label>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="demo-message" className="text-sm font-medium">Votre projet <span className="font-normal text-slate">(facultatif)</span></label>
           <textarea
+            id="demo-message"
             name="message"
+            rows={5}
             value={form.message}
             onChange={handleChange}
-            className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none h-32"
+            placeholder="Date, nombre d'invités, lieu, ce que vous attendez de la plateforme…"
+            className="w-full resize-y rounded-[14px] border border-ink/[.14] bg-white px-4 py-3.5 text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
           />
         </div>
 
         {/* Widget Turnstile */}
-        <div ref={turnstileRef} />
-
-        {/* {submitError && (
-          <p role="alert" aria-live="polite" className="text-red-500 text-sm text-center">
-            {submitError}
-          </p>
-        )} */}
+        <div ref={turnstileRef} className="min-h-[66px]" />
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-3 px-6 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
+          className="q-btn inline-flex min-h-14 items-center justify-center gap-2.5 rounded-full bg-brand font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {isSubmitting ? 'Envoi en cours...' : 'Envoyer la demande'}
+          {isSubmitting ? 'Envoi en cours…' : 'Envoyer la demande'}
         </button>
+        <p className="text-[13px] leading-normal text-[#8a8fae]">Vos informations servent uniquement à vous recontacter au sujet de votre demande.</p>
       </form>
+
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
