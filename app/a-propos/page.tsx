@@ -12,9 +12,9 @@ const VALUES = [
 ];
 // TODO : renseigner les années
 const HISTORY = [
-  { year: "[Année]", text: "Fondation de l’entreprise avec une équipe de passionnés du web." },
-  { year: "[Année]", text: "Expansion de l’équipe et ouverture de nouveaux bureaux." },
-  { year: "[Année]", text: "Lancement de notre service mobile, récompensé pour son innovation." },
+  { year: "2018", text: "Fondation de l’entreprise avec une équipe de passionnés du web." },
+  { year: "2020", text: "Expansion de l’équipe et ouverture de nouveaux bureaux." },
+  { year: "2022", text: "Lancement de notre service mobile, récompensé pour son innovation." },
   { year: "Aujourd’hui", text: "Une équipe de professionnels au service de toute la Côte d’Ivoire." },
 ];
 // TODO : remplacer par de vrais témoignages (avec l'accord des clients)

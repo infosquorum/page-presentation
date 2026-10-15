@@ -54,7 +54,7 @@ function cached<T>(path: string): Promise<T> {
     const p = getJson<T>(path).catch((e) => {
       cache.delete(path);
       if (process.env.NODE_ENV !== "production") {
-        console.error(`[Quorum Event] Échec de ${API_URL || "(NEXT_PUBLIC_API_URL non défini)"}${path} :`, e);
+        console.warn(`[Quorum Event] Échec de ${API_URL || "(NEXT_PUBLIC_API_URL non défini)"}${path} :`, e);
       }
       throw e;
     });

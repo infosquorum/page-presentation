@@ -7,6 +7,7 @@ import { CONTACT, FORMATS, IMAGES, LOTTIE, ROUTES } from "@/lib/site";
 import { ArrowIcon } from "./Icons";
 import { MagneticLink } from "./Interactive";
 import LottieSlot from "./LottieSlot";
+import NewsletterForm from "./NewsletterForm";
 import QrGrid from "./QrGrid";
 import Wordmark from "./Wordmark";
 
@@ -77,12 +78,7 @@ export default function SiteFooter() {
               <div className="mt-1.5 text-[15px] text-haze">Recevez nos prochains événements, rien d’autre.</div>
             </div>
           </div>
-          {/* TODO : brancher l'inscription à la newsletter (aucun endpoint n'existe encore) */}
-          <form onSubmit={(e) => e.preventDefault()} className="mt-6 flex max-w-[480px] flex-wrap gap-2 rounded-[28px] border border-white/[.12] bg-white/[.04] p-1.5">
-            <label htmlFor="newsletter-email" className="sr-only">Votre e-mail</label>
-            <input id="newsletter-email" type="email" required placeholder="Votre e-mail" className="min-h-[46px] min-w-0 flex-[1_1_180px] bg-transparent px-4 text-white placeholder:text-haze focus:outline-none" />
-            <button type="submit" className="q-btn min-h-[46px] rounded-full bg-[#eceefa] px-5 font-semibold text-night">Être prévenu</button>
-          </form>
+          <NewsletterForm />
         </div>
         <Column title="Prestations" links={[{ label: "Assemblées générales", href: ROUTES.ag }, ...FORMATS.slice(0, 4).map((f) => ({ label: f.title, href: `${ROUTES.prestations}#${f.id}` }))]} />
         <Column title="Liens utiles" links={[

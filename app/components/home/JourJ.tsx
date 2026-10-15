@@ -23,7 +23,7 @@ export default function JourJ() {
         <div className="absolute inset-x-0 bottom-0 mx-auto flex max-w-[1240px] flex-col gap-6 px-5 py-10 text-white sm:flex-row sm:items-end sm:justify-between sm:px-6">
           <div>
             {/* TODO : remplacer par l'événement réel de la vidéo */}
-            <div className="text-sm opacity-80">[Nom de l’événement] · [date]</div>
+            {/* <div className="text-sm opacity-80">[Nom de l’événement] · [date]</div> */}
             <div className="mt-2.5 text-[clamp(30px,4vw,52px)] font-semibold tracking-[-0.04em]">Revivez l’ambiance.</div>
           </div>
           {/* TODO : ouvrir la vidéo (fichier ou YouTube) dans une fenêtre */}

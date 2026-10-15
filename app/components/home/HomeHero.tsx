@@ -64,7 +64,7 @@ export default function HomeHero() {
           L’événement,<br />de bout en bout.
         </h1>
         <p className="mx-auto mt-7 max-w-[640px] text-[clamp(17px,2vw,21px)] leading-normal text-slate">
-          Vos <span key={word} className="q-word font-semibold text-ink">{WORDS[word]}</span>, de l’inscription au bilan : billetterie mobile, accueil par scan, votes et interactions en direct.
+          Vos <span key={word} className="q-word inline-block font-semibold text-ink">{WORDS[word]}</span>, de l’inscription au bilan : billetterie mobile, accueil par scan, votes et interactions en direct.
         </p>
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
           <Link href={ROUTES.demo} className="q-btn inline-flex min-h-[54px] items-center justify-center gap-2.5 rounded-full bg-brand px-7 font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,.25),0_12px_30px_-12px_rgba(65,85,201,.8)]">

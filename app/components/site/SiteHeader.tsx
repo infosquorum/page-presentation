@@ -46,9 +46,12 @@ export default function SiteHeader() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+  // Le défilement est bloqué sur <html> (et non <body>) : bloquer <body> le transforme en
+  // conteneur de défilement remis à zéro, ce qui renvoyait l'en-tête et le menu en haut de page.
   useEffect(() => {
-    document.body.style.overflow = mobile ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const root = document.documentElement;
+    root.style.overflow = mobile ? "hidden" : "";
+    return () => { root.style.overflow = ""; };
   }, [mobile]);
 
   const open = (m: Menu) => { if (closeTimer.current) clearTimeout(closeTimer.current); setMenu(m); };
@@ -89,7 +92,10 @@ export default function SiteHeader() {
   );
 
   return (
-    <header onMouseLeave={scheduleClose} className="sticky top-0 z-[60] border-b border-ink/[.07] bg-mist/80 backdrop-blur-xl backdrop-saturate-[1.8]">
+    <header onMouseLeave={scheduleClose} className="sticky top-0 z-[60] border-b border-ink/[.07]">
+      {/* Le flou est sur un calque séparé : posé sur <header>, il empêcherait le menu mobile
+          (position: fixed) de se caler sur l'écran. */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-mist/80 backdrop-blur-xl backdrop-saturate-[1.8]" />
       <nav aria-label="Navigation principale" className="mx-auto flex min-h-[60px] max-w-[1240px] items-center gap-5 px-5 py-2.5 sm:px-6">
         <Link href={ROUTES.home} className="flex min-h-11 items-center gap-2.5 text-base font-semibold tracking-tight text-ink">
           <span aria-hidden className="inline-flex">
@@ -162,7 +168,7 @@ export default function SiteHeader() {
       </>)}
 
       {mobile && (
-        <div id="menu-mobile" className="q-in absolute inset-x-0 top-full flex h-[calc(100dvh-60px)] flex-col overflow-y-auto bg-mist px-5 pb-8 pt-2 lg:hidden">
+        <div id="menu-mobile" className="q-in fixed inset-x-0 bottom-0 top-[61px] flex flex-col overflow-y-auto overscroll-contain bg-mist px-5 pb-8 pt-2 lg:hidden">
           {mobileSection("prestations", "Nos prestations", <>
             {mLink(ROUTES.ag, "Assemblées générales", true)}
             {FORMATS.map((f) => mLink(`${ROUTES.prestations}#${f.id}`, f.title))}

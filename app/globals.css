@@ -61,7 +61,7 @@ html, body { overflow-x: clip; }
 .q-rec { animation: qRec 1.2s ease-in-out infinite; }
 .q-marquee { animation: qMarquee 42s linear infinite; }
 .q-marquee:hover { animation-play-state: paused; }
-.q-word { display: inline-block; animation: qWord .8s cubic-bezier(.2,.8,.2,1) both; }
+.q-word { animation: qWord .8s cubic-bezier(.2,.8,.2,1) both; }
 .q-in { animation: qIn .35s cubic-bezier(.2,.8,.2,1) both; }
 .q-float { animation: qFloat 6s ease-in-out infinite; }
 .q-float-2 { animation: qFloat 7s ease-in-out -3s infinite; }
